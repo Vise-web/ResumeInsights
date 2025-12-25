@@ -35,15 +35,17 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const model = genAI.getGenerativeModel({
   model: "gemini-2.5-flash",
 });
+//* ---------------- ROUTES ---------------- *//
+// Optional GET route to prevent 404 when someone opens /upload in browser
+app.get("/upload", (req, res) => {
+  res.send("Use the homepage upload form.");
+});
 
-/* ---------------- ROUTE ---------------- */
+// POST route for actual file upload
 app.post("/upload", upload.single("resume"), async (req, res) => {
-  let filePath;
+  // ... your existing upload logic
+});
 
-  try {
-    if (!req.file) {
-      return res.status(400).send("No file uploaded");
-    }
 
     filePath = req.file.path;
 
@@ -105,3 +107,4 @@ ${pdf.text}
 app.listen(PORT, () => {
   console.log(`🚀 Server running at http://localhost:${PORT}`);
 });
+
