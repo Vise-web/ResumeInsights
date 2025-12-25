@@ -92,7 +92,7 @@ ${pdf.text}
 
     /* REDIRECT TO RESULT PAGE */
     res.redirect("/result.html");
-  } catch (err) {
+  }/* catch (err) {
     console.error("❌ Error:", err);
 
     if (filePath && fs.existsSync(filePath)) {
@@ -107,4 +107,5 @@ ${pdf.text}
 app.listen(PORT, () => {
   console.log(`🚀 Server running at http://localhost:${PORT}`);
 });
+
 
